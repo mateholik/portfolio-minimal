@@ -58,6 +58,9 @@
               </li>
             </ul>
           </div>
+          <div class="me">
+            <img src="./assets/me.jpeg" alt="me" />
+          </div>
         </div>
         <div v-else>
           <div class="block">
@@ -68,13 +71,14 @@
             ></div>
             <div class="images">
               <a
-                v-for="imgPath in activeItem.imgs"
-                :key="imgPath"
+                v-for="img in activeItem.imgs"
+                :key="img.thumb"
                 class="img-wrapper"
-                :href="imageSrc(imgPath)"
+                :href="imageModule(img.full)"
                 target="_blank"
               >
-                <img :alt="activeItem.title" :src="imageSrc(imgPath)" />
+                <img :alt="activeItem.title" :src="imageModule(img.thumb)" />
+                <p>{{ img.name }}</p>
               </a>
             </div>
           </div>
@@ -95,16 +99,46 @@ export default {
           description:
             "Jausmas, šokant parašiutu?<br>Tai nėra kritimo jausmas, greičiau - skrydžio.<br>Daug vėjo, garso. Labai intensyvus jausmas. <br>Adrenalinas pulsuoja ir visi pojūčiai maksimaliai aštrūs.<br><br>Šis pavasaris atrodė, niekada neateis. Prasidėjo karas Ukrainoje.<br>Tačiau gamta išsiveržė visomis ryškiomis spalvomis ir nauja gyvybe.<br>Fone pajuodusių nuo bombų pastatų, išdygusios raudonos tulpės, išsprogę beržų lapeliai atrodo siurrealistiškai.<br>Žmonės, bėgantys nuo karo, taip apibūdino savo būseną: - Jaučiausi taip, lyg būčiau gavusi švirkštą adrenalino tiesiai į smegenis, todėl labai gerai suvokiau esamą akimirką ir buvau pasiruošusi bet kurią sekundę pulti. (Katerina Kovalenko).<br><br>Kaštonas savo didžiuliais lapais ir baltomis žiedų žvakėmis įkūnija pavasario gaivalą. Praeitą pavasarį mane aplankė vizija - parašiutininkas neria į žydinčius kaštonus. 2022 m pavasario įvykiai sukrėtė apsnūdusią Europą ir privertė plačiai atmerkti akis.",
           imgs: [
-            "/adrenaline/1.jpg",
-            "/adrenaline/2.jpg",
-            "/adrenaline/3.jpg",
-            "/adrenaline/4.jpg",
-            "/adrenaline/5.jpg",
-            "/adrenaline/6.jpg",
-            "/adrenaline/7.jpg",
-            "/adrenaline/8.jpeg",
-            "/adrenaline/9.jpeg",
-            "/adrenaline/10.jpeg",
+            {
+              name: "",
+              thumb: "/adrenaline/thumbs/1-thumb.jpeg",
+              full: "/adrenaline/1.jpg",
+            },
+            {
+              name: "",
+              thumb: "/adrenaline/thumbs/4-thumb.jpeg",
+              full: "/adrenaline/4.jpg",
+            },
+            {
+              name: "",
+              thumb: "/adrenaline/thumbs/5-thumb.jpeg",
+              full: "/adrenaline/5.jpg",
+            },
+            {
+              name: "",
+              thumb: "/adrenaline/thumbs/6-thumb.jpeg",
+              full: "/adrenaline/6.jpg",
+            },
+            {
+              name: "",
+              thumb: "/adrenaline/thumbs/7-thumb.jpeg",
+              full: "/adrenaline/7.jpg",
+            },
+            {
+              name: "",
+              thumb: "/adrenaline/thumbs/8-thumb.jpeg",
+              full: "/adrenaline/8.jpg",
+            },
+            {
+              name: "",
+              thumb: "/adrenaline/thumbs/9-thumb.jpeg",
+              full: "/adrenaline/9.jpg",
+            },
+            {
+              name: "",
+              thumb: "/adrenaline/thumbs/10-thumb.jpeg",
+              full: "/adrenaline/10.jpg",
+            },
           ],
         },
         {
@@ -112,46 +146,117 @@ export default {
           description:
             '"Naktinės veiklos"<br><br>Naktinės akistatos su savimi<br>Naktinis narcizų žydėjimas<br>Naktinis Tengo laukimas<br>Naktinės maudynės<br>Naktinis pomidorų augimas',
           imgs: [
-            "/culture-night-2020/1.jpg",
-            "/culture-night-2020/2.jpg",
-            "/culture-night-2020/3.jpg",
-            "/culture-night-2020/4.jpg",
-            "/culture-night-2020/5.jpg",
-            "/culture-night-2020/6.jpg",
-            "/culture-night-2020/7.jpg",
+            {
+              name: "Driving to heaven, 2020",
+              thumb: "/culture-night-2020/thumbs/1-thumb.jpg",
+              full: "/culture-night-2020/1.jpg",
+            },
+            {
+              name: "",
+              thumb: "/culture-night-2020/thumbs/2-thumb.jpg",
+              full: "/culture-night-2020/2.jpg",
+            },
+            {
+              name: "Pomidorai, 2020",
+              thumb: "/culture-night-2020/thumbs/3-thumb.jpg",
+              full: "/culture-night-2020/3.jpg",
+            },
+            {
+              name: "Narcizai, 2020",
+              thumb: "/culture-night-2020/thumbs/4-thumb.jpg",
+              full: "/culture-night-2020/4.jpg",
+            },
+            {
+              name: "Besimaudantys, 2020",
+              thumb: "/culture-night-2020/thumbs/5-thumb.jpg",
+              full: "/culture-night-2020/5.jpg",
+            },
+            {
+              name: "",
+              thumb: "/culture-night-2020/thumbs/6-thumb.jpg",
+              full: "/culture-night-2020/6.jpg",
+            },
+            {
+              name: "Mauduoliai, 2020",
+              thumb: "/culture-night-2020/thumbs/7-thumb.jpg",
+              full: "/culture-night-2020/7.jpg",
+            },
           ],
         },
         {
           title: "Art without roof",
-          imgs: ["/art-without-roof/1.jpeg"],
+          imgs: [
+            {
+              name: "Autoportretas, 2004",
+              thumb: "/art-without-roof/thumbs/1-thumb.jpeg",
+              full: "/art-without-roof/1.jpeg",
+            },
+          ],
         },
         {
           title: "Coca Art",
-          imgs: ["/seskine/1.jpeg", "/seskine/2.jpeg", "/seskine/3.jpeg"],
+          description:
+            " <a href='https://cocaproject.art/artists/lina-audronyte-vladimirova-coca20/' target='_blank'>https://cocaproject.art/artists/lina-audronyte-vladimirova-coca20/</a>",
+          imgs: [
+            {
+              name: "",
+              thumb: "/coca-art/thumbs/1-thumb.jpeg",
+              full: "/coca-art/1.jpg",
+            },
+            {
+              name: "Studenčių vakaras Antakalnyje, 2013",
+              thumb: "/coca-art/thumbs/2-thumb.jpeg",
+              full: "/coca-art/2.jpg",
+            },
+            {
+              name: "Kur tu, Tengo? 2020",
+              thumb: "/coca-art/thumbs/3-thumb.jpeg",
+              full: "/coca-art/3.jpg",
+            },
+          ],
         },
         {
           title: "Šeškinė",
-          imgs: ["/coca-art/1.jpg", "/coca-art/2.jpg", "/coca-art/3.jpg"],
+          imgs: [
+            {
+              name: "Čiuožykla, 2020",
+              thumb: "/seskine/thumbs/1-thumb.jpg",
+              full: "/seskine/1.jpeg",
+            },
+            {
+              name: "Šeškinė, 2021",
+              thumb: "/seskine/thumbs/2-thumb.jpg",
+              full: "/seskine/2.jpeg",
+            },
+            {
+              name: "Sūpuoklės, 2020",
+              thumb: "/seskine/thumbs/3-thumb.jpg",
+              full: "/seskine/3.jpeg",
+            },
+          ],
         },
       ],
       activeItem: "",
     };
   },
-  // watch: {
-  //   activeItem() {
-  //     if (window.innerWidth < 769)
-  //       this.$refs.article.scrollIntoView({
-  //         behavior: "smooth",
-  //         top: -100,
-  //       });
-  //   },
-  // },
+  watch: {
+    activeItem() {
+      if (window.innerWidth < 769) {
+        let y =
+          this.$refs.article.getBoundingClientRect().top +
+          window.pageYOffset -
+          20;
+
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    },
+  },
   mounted() {
     this.activeItem = this.projects[0];
     this.imagesModules = import.meta.globEager("./assets/**");
   },
   methods: {
-    imageSrc(path) {
+    imageModule(path) {
       const fullPath = "./assets" + path;
       return this.imagesModules[fullPath].default;
     },
@@ -168,6 +273,9 @@ body {
   text-rendering: optimizeLegibility;
   color: 222;
   font-family: "Roboto", sans-serif;
+}
+a {
+  text-decoration: none;
 }
 .container {
   max-width: 1200px;
@@ -210,7 +318,6 @@ header {
 }
 nav {
   width: 290px;
-
   border-right: 1px solid #b3b3b3;
   margin-right: 5%;
   flex-shrink: 0;
@@ -229,6 +336,9 @@ nav {
     margin-bottom: 24px;
     cursor: pointer;
     transition: 0.2s;
+    &:hover {
+      color: #039a7f;
+    }
   }
   li {
     list-style: none;
@@ -240,6 +350,9 @@ nav {
     margin-left: 32px;
     &:last-of-type {
       margin-bottom: 0;
+    }
+    &:hover {
+      color: #039a7f;
     }
   }
   .active {
@@ -266,12 +379,11 @@ main {
       padding-right: 0;
     }
     .block {
+      margin-bottom: 24px;
       h4 {
         font-size: 22px;
         font-weight: 500;
         margin-bottom: 16px;
-      }
-      ul {
       }
       li {
         font-size: 18px;
@@ -280,6 +392,14 @@ main {
       }
       div {
         line-height: 1.5;
+      }
+    }
+    .me {
+      max-width: 300px;
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
       }
     }
     .images {
@@ -299,6 +419,11 @@ main {
         display: block;
         width: 100%;
         height: auto;
+      }
+      p {
+        margin-top: 10px;
+        color: #222;
+        font-weight: 500;
       }
     }
   }
