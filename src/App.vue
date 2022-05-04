@@ -101,7 +101,7 @@ export default {
           imgs: [
             {
               name: "",
-              thumb: "/adrenaline/thumbs/1-thumb.jpeg",
+              thumb: "/adrenaline/thumbs/1-thumb.jpg",
               full: "/adrenaline/1.jpg",
             },
             {
@@ -172,7 +172,7 @@ export default {
               full: "/culture-night-2020/5.jpg",
             },
             {
-              name: "",
+              name: "Kur tu, Tengo? 2020",
               thumb: "/culture-night-2020/thumbs/6-thumb.jpg",
               full: "/culture-night-2020/6.jpg",
             },
@@ -199,8 +199,8 @@ export default {
             " <a href='https://cocaproject.art/artists/lina-audronyte-vladimirova-coca20/' target='_blank'>https://cocaproject.art/artists/lina-audronyte-vladimirova-coca20/</a>",
           imgs: [
             {
-              name: "",
-              thumb: "/coca-art/thumbs/1-thumb.jpeg",
+              name: "Bare, 2020",
+              thumb: "/coca-art/thumbs/1-thumb.jpg",
               full: "/coca-art/1.jpg",
             },
             {
@@ -210,7 +210,7 @@ export default {
             },
             {
               name: "Kur tu, Tengo? 2020",
-              thumb: "/coca-art/thumbs/3-thumb.jpeg",
+              thumb: "/coca-art/thumbs/3-thumb.jpg",
               full: "/coca-art/3.jpg",
             },
           ],
